@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <title>MK Online Services | Financial & Tax Solutions</title>
+    <meta name="description" content="MK Online Services provides expert GST filings, ITR, accounting, loans, insurance, and credit card cash services in Tirupati, Rayachoty, Kadapa, and Proddutur." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans Telugu', 'sans-serif'],
+                        heading: ['Outfit', 'Noto Sans Telugu', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6', // Primary Teal
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            DEFAULT: '#2DB2E4', // The exact blue from the card
+                        },
+                        secondary: '#1e293b'
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(45, 178, 228, 0.4)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <style>
+        /* Hide scrollbar globally */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE 10+ */
+        }
+        
+        body {
+            -webkit-font-smoothing: antialiased;
+            background-color: #f8fafc;
+        }
+        
+        /* Custom Hexagon/Cube Logo Styling */
+        .cube-logo {
+            position: relative;
+            width: 44px;
+            height: 48px;
+            background: #2DB2E4;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.2), inset 5px 5px 15px rgba(255,255,255,0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cube-logo::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 50%;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .group:hover .cube-logo {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Abstract Background Pattern */
+        .bg-pattern {
+            background-image: radial-gradient(#2DB2E4 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.1;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="text-slate-800" x-data="{ mobileMenuOpen: false, scrolled: false, lang: 'en', searchQuery: '' }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+    <!-- Navigation -->
+    <header :class="{'bg-white/95 backdrop-blur-md shadow-sm': scrolled, 'bg-transparent': !scrolled}" class="fixed w-full top-0 z-50 transition-all duration-300">
+        
+        <!-- Top Contact Bar & Language Switcher -->
+        <div class="bg-slate-900 text-slate-300 transition-all duration-300 overflow-hidden" :class="{'h-0 opacity-0': scrolled, 'h-10 opacity-100': !scrolled}">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex justify-between items-center text-xs md:text-sm font-medium">
+                <div class="flex gap-4 md:gap-6 h-full items-center">
+                    <a href="tel:+919494714142" class="hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-phone-alt text-brand"></i> +91 9494714142</a>
+                    <a href="mailto:reltasassociates@gmail.com" class="hidden sm:flex hover:text-white transition-colors items-center gap-2"><i class="fas fa-envelope text-brand"></i> reltasassociates@gmail.com</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt text-brand"></i> 
+                        <span x-show="lang === 'en'">Tirupati, Rayachoty, Kadapa, Proddutur</span>
+                        <span x-show="lang === 'te'" x-cloak>తిరుపతి, రాయచోటి, కడప, ప్రొద్దుటూరు</span>
+                    </div>
+                    <!-- Language Toggle -->
+                    <div class="flex items-center gap-2 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+                        <button @click="lang = 'en'" :class="lang === 'en' ? 'text-white font-bold' : 'text-slate-400 hover:text-white'" class="transition-colors text-xs">EN</button>
+                        <div class="w-px h-3 bg-slate-600"></div>
+                        <button @click="lang = 'te'" :class="lang === 'te' ? 'text-white font-bold' : 'text-slate-400 hover:text-white'" class="transition-colors text-xs">తెలుగు</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300" :class="{'py-3': scrolled, 'py-5': !scrolled}">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="cube-logo">
+                        <span class="z-10 tracking-tighter">mk</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl text-brand tracking-wide uppercase leading-none">MK Online</span>
+                        <span class="font-heading font-semibold text-sm text-slate-500 tracking-widest uppercase leading-none mt-1 group-hover:text-brand transition-colors">Services</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-brand transition-colors">
+                        <span x-show="lang === 'en'">About Us</span>
+                        <span x-show="lang === 'te'" x-cloak>మా గురించి</span>
+                    </a>
+                    <a href="#services" class="text-sm font-semibold text-slate-600 hover:text-brand transition-colors">
+                        <span x-show="lang === 'en'">Our Services</span>
+                        <span x-show="lang === 'te'" x-cloak>మా సేవలు</span>
+                    </a>
+                    <a href="#locations" class="text-sm font-semibold text-slate-600 hover:text-brand transition-colors">
+                        <span x-show="lang === 'en'">Locations</span>
+                        <span x-show="lang === 'te'" x-cloak>ప్రాంతాలు</span>
+                    </a>
+                    <a href="tel:+919494714142" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-brand text-white font-semibold text-sm shadow-glow hover:bg-cyan-500 hover:-translate-y-1 transition-all duration-300">
+                        <i class="fas fa-phone-alt mr-2 animate-pulse"></i> 
+                        <span x-show="lang === 'en'">Call Now</span>
+                        <span x-show="lang === 'te'" x-cloak>కాల్ చేయండి</span>
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <!-- Mobile Lang Toggle when Scrolled -->
+                    <div x-show="scrolled" class="flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 mr-2">
+                        <button @click="lang = 'en'" :class="lang === 'en' ? 'text-brand font-bold' : 'text-slate-500'" class="transition-colors text-xs">EN</button>
+                        <div class="w-px h-3 bg-slate-300"></div>
+                        <button @click="lang = 'te'" :class="lang === 'te' ? 'text-brand font-bold' : 'text-slate-500'" class="transition-colors text-xs">తెలుగు</button>
+                    </div>
+                    
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 text-slate-600 hover:text-brand transition-colors">
+                        <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
+                        <i class="fas fa-times text-2xl" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div x-show="mobileMenuOpen" x-transition.opacity x-cloak class="md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg origin-top">
+            <div class="px-4 py-6 space-y-4 flex flex-col">
+                <a href="#about" @click="mobileMenuOpen = false" class="text-base font-semibold text-slate-700 p-2 hover:bg-slate-50 rounded-lg transition-colors">
+                    <span x-show="lang === 'en'">About Us</span>
+                    <span x-show="lang === 'te'" x-cloak>మా గురించి</span>
+                </a>
+                <a href="#services" @click="mobileMenuOpen = false" class="text-base font-semibold text-slate-700 p-2 hover:bg-slate-50 rounded-lg transition-colors">
+                    <span x-show="lang === 'en'">Our Services</span>
+                    <span x-show="lang === 'te'" x-cloak>మా సేవలు</span>
+                </a>
+                <a href="#locations" @click="mobileMenuOpen = false" class="text-base font-semibold text-slate-700 p-2 hover:bg-slate-50 rounded-lg transition-colors">
+                    <span x-show="lang === 'en'">Locations</span>
+                    <span x-show="lang === 'te'" x-cloak>ప్రాంతాలు</span>
+                </a>
+                <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
+                    <a href="tel:+919494714142" class="flex items-center justify-center px-6 py-3 rounded-xl bg-brand text-white font-semibold w-full hover:bg-cyan-500 transition-colors">
+                        <i class="fas fa-phone-alt mr-2"></i> 9494714142
+                    </a>
+                    <a href="mailto:reltasassociates@gmail.com" class="flex items-center justify-center px-6 py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold w-full hover:bg-slate-200 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i> 
+                        <span x-show="lang === 'en'">Email Us</span>
+                        <span x-show="lang === 'te'" x-cloak>ఇమెయిల్ చేయండి</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden">
+            <div class="absolute inset-0 bg-pattern z-0 animate-[pulse_4s_ease-in-out_infinite]"></div>
+            
+            <!-- Decorative Animated Blobs -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand/20 blur-3xl z-0 animate-blob"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-cyan-300/30 blur-3xl z-0 animate-blob animation-delay-2000"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <!-- Shared Data Scope for Both Columns to Auto-Scroll Together -->
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+                     x-data="{
+                         active: 0,
+                         services: [
+                            { icon: 'fa-file-signature', title_en: 'GST Filings', title_te: 'GST ఫైలింగ్స్', prob_en: 'Solves compliance notices & late fees.', prob_te: 'లేట్ ఫీజులు మరియు నోటీసులను నివారిస్తుంది.' },
+                            { icon: 'fa-money-bill-transfer', title_en: 'Card to Cash', title_te: 'కార్డ్ టు క్యాష్', prob_en: 'Solves immediate cash crunch at low rates.', prob_te: 'తక్కువ వడ్డీతో తక్షణ నగదు సదుపాయం.' },
+                            { icon: 'fa-file-invoice-dollar', title_en: 'ITR Filings', title_te: 'ITR ఫైలింగ్స్', prob_en: 'Maximizes legal tax deductions.', prob_te: 'చట్టపరమైన తగ్గింపుల ద్వారా పన్ను ఆదా.' },
+                            { icon: 'fa-chart-line', title_en: 'Project Reports', title_te: 'ప్రాజెక్ట్ రిపోర్ట్స్', prob_en: 'Secures bank loans and funding.', prob_te: 'బ్యాంక్ రుణాల మంజూరు సులభతరం చేస్తుంది.' },
+                            { icon: 'fa-hand-holding-dollar', title_en: 'Business Loans', title_te: 'లోన్స్', prob_en: 'Solves capital shortage for growth.', prob_te: 'వ్యాపార వృద్ధికి మూలధనం అందిస్తుంది.' },
+                            { icon: 'fa-id-card', title_en: 'Udyam Register', title_te: 'ఉద్యమ్ రిజిస్ట్రేషన్', prob_en: 'Secures missing Govt MSME benefits.', prob_te: 'ప్రభుత్వ MSME ప్రయోజనాలను పొందేలా చేస్తుంది.' },
+                            { icon: 'fa-shield-heart', title_en: 'Life Insurance', title_te: 'ఇన్సూరెన్స్', prob_en: 'Removes financial risk for family.', prob_te: 'మీ కుటుంబ భవిష్యత్తుకు ఆర్థిక భద్రత.' },
+                            { icon: 'fa-calculator', title_en: 'Accounting', title_te: 'అకౌంటింగ్', prob_en: 'Solves messy records & audit issues.', prob_te: 'ఆర్థిక రికార్డులు మరియు ఆడిట్ సమస్యల పరిష్కారం.' },
+                            { icon: 'fa-piggy-bank', title_en: 'PF Withdrawals', title_te: 'PF విత్‌డ్రాల్స్', prob_en: 'Simplifies complex PF claim processes.', prob_te: 'సంక్లిష్టమైన PF క్లెయిమ్‌ల సులభతర ప్రక్రియ.' }
+                         ],
+                         init() {
+                             setInterval(() => {
+                                 this.active = (this.active + 1) % this.services.length;
+                             }, 3000);
+                         }
+                     }">
+                     
+                    <!-- Text Column (Order 2 on mobile, Order 1 on Desktop) -->
+                    <div class="max-w-2xl order-2 lg:order-1 mt-4 lg:mt-0">
+                        <div data-aos="fade-down" data-aos-duration="800" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand font-semibold text-sm mb-6 border border-brand/20">
+                            <i class="fas fa-shield-check"></i> 
+                            <span x-show="lang === 'en'">Trusted Professional Services</span>
+                            <span x-show="lang === 'te'" x-cloak>నమ్మకమైన ప్రొఫెషనల్ సేవలు</span>
+                        </div>
+                        
+                        <!-- Dynamic Headline directly showing the service -->
+                        <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-4 min-h-[100px] sm:min-h-[120px] transition-all duration-300">
+                            <span x-show="lang === 'en'">Expert <span class="text-brand transition-all duration-300" x-text="services[active].title_en"></span> <br>Solutions.</span>
+                            <span x-show="lang === 'te'" x-cloak>ఉత్తమ <span class="text-brand transition-all duration-300" x-text="services[active].title_te"></span> <br>పరిష్కారాలు.</span>
+                        </h1>
+                        
+                        <!-- Dynamic Paragraph highlighting exactly what problem it solves -->
+                        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="text-lg text-slate-600 mb-8 leading-relaxed min-h-[110px] sm:min-h-[90px] transition-all duration-300">
+                            <span class="font-bold text-brand flex items-center gap-2 mb-2 text-[1.1rem]">
+                                <i class="fas fa-arrow-right"></i>
+                                <span x-show="lang === 'en'" x-text="services[active].prob_en"></span>
+                                <span x-show="lang === 'te'" x-cloak x-text="services[active].prob_te"></span>
+                            </span>
+                            <span x-show="lang === 'en'">We deliver accurate, timely, and professional support across Tirupati, Rayachoty, Kadapa, and Proddutur.</span>
+                            <span x-show="lang === 'te'" x-cloak>మేము తిరుపతి, రాయచోటి, కడప, మరియు ప్రొద్దుటూరులో వేగవంతమైన మరియు వృత్తిపరమైన మద్దతును అందిస్తున్నాము.</span>
+                        </p>
+                        
+                        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" class="flex flex-wrap gap-4">
+                            <a href="https://wa.me/919494714142" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#25D366] text-white font-bold shadow-lg shadow-[#25D366]/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300">
+                                <i class="fab fa-whatsapp text-xl mr-2"></i> 
+                                <span x-show="lang === 'en'">WhatsApp Us</span>
+                                <span x-show="lang === 'te'" x-cloak>వాట్సాప్ చేయండి</span>
+                            </a>
+                            <a href="#services" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-slate-700 border border-slate-200 font-bold shadow-sm hover:border-brand hover:text-brand hover:-translate-y-1 transition-all duration-300">
+                                <span x-show="lang === 'en'">Explore Services</span>
+                                <span x-show="lang === 'te'" x-cloak>సేవలను చూడండి</span>
+                                <i class="fas fa-arrow-down ml-2 text-sm animate-bounce"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="mt-10 grid grid-cols-3 gap-2 sm:gap-4 border-t border-slate-200/60 pt-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand shrink-0">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <span class="text-xs sm:text-sm font-semibold text-slate-700 leading-tight">
+                                    <span x-show="lang === 'en'">100%<br>Secure</span>
+                                    <span x-show="lang === 'te'" x-cloak>100%<br>సురక్షితం</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand shrink-0">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <span class="text-xs sm:text-sm font-semibold text-slate-700 leading-tight">
+                                    <span x-show="lang === 'en'">Fast<br>Processing</span>
+                                    <span x-show="lang === 'te'" x-cloak>వేగవంతమైన<br>సేవలు</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand shrink-0">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <span class="text-xs sm:text-sm font-semibold text-slate-700 leading-tight">
+                                    <span x-show="lang === 'en'">Expert<br>Support</span>
+                                    <span x-show="lang === 'te'" x-cloak>నిపుణుల<br>మద్దతు</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side Auto-Scrolling Service Card (Order 1 on mobile to show Services First!) -->
+                    <div class="relative order-1 lg:order-2 w-full max-w-lg mx-auto lg:max-w-none" data-aos="zoom-in-left" data-aos-duration="1200" data-aos-delay="100">
+                        <div class="animate-float">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-brand to-cyan-300 rounded-[2.5rem] transform rotate-3 scale-105 opacity-20 blur-lg transition-transform duration-700"></div>
+                            
+                            <!-- Dynamic Card Area -->
+                            <div class="relative bg-white border border-slate-100 rounded-[2.5rem] p-6 sm:p-8 shadow-2xl z-10 hover:shadow-brand/20 transition-shadow duration-500 overflow-hidden">
+                                
+                                <!-- Card Header -->
+                                <div class="mb-4 flex justify-between items-center">
+                                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                                        <span x-show="lang === 'en'">Service Showcase</span>
+                                        <span x-show="lang === 'te'" x-cloak>సేవల ప్రదర్శన</span>
+                                    </h4>
+                                    <span class="flex h-3 w-3 relative">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-brand"></span>
+                                    </span>
+                                </div>
+
+                                <!-- Auto-Scrolling Service Item -->
+                                <div class="relative min-h-[100px] mb-4">
+                                    <template x-for="(svc, index) in services" :key="index">
+                                        <div x-show="active === index"
+                                             x-transition:enter="transition ease-out duration-500"
+                                             x-transition:enter-start="opacity-0 translate-y-4"
+                                             x-transition:enter-end="opacity-100 translate-y-0"
+                                             x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
+                                             x-transition:leave-start="opacity-100 translate-y-0"
+                                             x-transition:leave-end="opacity-0 -translate-y-4"
+                                             class="flex items-center gap-4">
+                                            
+                                            <div class="w-16 h-16 rounded-2xl bg-brand/10 flex items-center justify-center text-brand text-2xl shrink-0 border border-brand/20">
+                                                <i class="fas" :class="svc.icon"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-heading font-bold text-xl text-slate-800 leading-tight">
+                                                    <span x-show="lang === 'en'" x-text="svc.title_en"></span>
+                                                    <span x-show="lang === 'te'" x-cloak x-text="svc.title_te"></span>
+                                                </h3>
+                                                <p class="text-slate-700 text-xs font-semibold mt-1.5 bg-slate-50 px-2.5 py-1 rounded inline-flex items-center border border-slate-200 shadow-sm">
+                                                    <i class="fas fa-check-circle text-green-500 mr-1.5 shrink-0"></i>
+                                                    <span x-show="lang === 'en'" x-text="svc.prob_en"></span>
+                                                    <span x-show="lang === 'te'" x-cloak x-text="svc.prob_te"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Progress Indicators -->
+                                <div class="flex gap-1 mb-8">
+                                    <template x-for="(svc, index) in services" :key="index">
+                                        <div class="h-1 flex-1 rounded-full transition-colors duration-300" :class="active === index ? 'bg-brand' : 'bg-slate-100'"></div>
+                                    </template>
+                                </div>
+                                
+                                <!-- Highlighted Credit Card Rates -->
+                                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:bg-slate-100 transition-colors duration-300">
+                                    <h4 class="font-heading font-bold text-sm text-slate-800 uppercase tracking-wider mb-4 flex items-center gap-2">
+                                        <i class="fas fa-credit-card text-brand"></i> 
+                                        <span x-show="lang === 'en'">Credit Card to Cash</span>
+                                        <span x-show="lang === 'te'" x-cloak>క్రెడిట్ కార్డ్ టు క్యాష్</span>
+                                    </h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center group">
+                                            <span class="text-slate-600 font-medium group-hover:text-brand transition-colors">
+                                                <span x-show="lang === 'en'">Rupay Cards</span>
+                                                <span x-show="lang === 'te'" x-cloak>రూపే కార్డ్స్</span>
+                                            </span>
+                                            <span class="bg-white px-3 py-1 rounded-lg text-brand font-bold shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">1.0%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center group">
+                                            <span class="text-slate-600 font-medium group-hover:text-brand transition-colors">
+                                                <span x-show="lang === 'en'">Visa Cards</span>
+                                                <span x-show="lang === 'te'" x-cloak>వీసా కార్డ్స్</span>
+                                            </span>
+                                            <span class="bg-white px-3 py-1 rounded-lg text-brand font-bold shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">2.2%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center group">
+                                            <span class="text-slate-600 font-medium group-hover:text-brand transition-colors">
+                                                <span x-show="lang === 'en'">Master Cards</span>
+                                                <span x-show="lang === 'te'" x-cloak>మాస్టర్ కార్డ్స్</span>
+                                            </span>
+                                            <span class="bg-white px-3 py-1 rounded-lg text-brand font-bold shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">2.4%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-slate-50 relative border-t border-slate-200/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="absolute inset-0 bg-brand rounded-3xl transform -rotate-3 opacity-10"></div>
+                        <div class="relative bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-slate-100 z-10">
+                            <div class="cube-logo w-16 h-16 text-2xl mb-8 shadow-lg">
+                                <span class="z-10 tracking-tighter">mk</span>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-slate-800 mb-4">
+                                <span x-show="lang === 'en'">Committed to Your Financial Success</span>
+                                <span x-show="lang === 'te'" x-cloak>మీ ఆర్థిక విజయానికి కట్టుబడి ఉన్నాము</span>
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                <span x-show="lang === 'en'">MK Online Services is built on the foundation of trust, accuracy, and customer satisfaction. We handle the complexities of taxation, compliance, and finance so you can focus on growing your business and enjoying peace of mind.</span>
+                                <span x-show="lang === 'te'" x-cloak>MK ఆన్‌లైన్ సర్వీసెస్ నమ్మకం, ఖచ్చితత్వం మరియు కస్టమర్ సంతృప్తి ఆధారంగా నిర్మించబడింది. మీరు వ్యాపారంపై దృష్టి పెట్టడానికి మేము పన్నులు మరియు ఆర్థిక విషయాలను సులభతరం చేస్తాము.</span>
+                            </p>
+                            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-100">
+                                <div>
+                                    <h4 class="font-heading text-3xl font-extrabold text-brand mb-1">1000+</h4>
+                                    <p class="text-sm text-slate-500 font-medium">
+                                        <span x-show="lang === 'en'">Happy Clients</span>
+                                        <span x-show="lang === 'te'" x-cloak>సంతోషకరమైన కస్టమర్లు</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading text-3xl font-extrabold text-brand mb-1">4</h4>
+                                    <p class="text-sm text-slate-500 font-medium">
+                                        <span x-show="lang === 'en'">Branch Locations</span>
+                                        <span x-show="lang === 'te'" x-cloak>బ్రాంచ్ ప్రాంతాలు</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" data-aos-duration="1000">
+                        <span class="text-brand font-bold uppercase tracking-widest text-sm mb-2 block">
+                            <span x-show="lang === 'en'">About Us</span>
+                            <span x-show="lang === 'te'" x-cloak>మా గురించి</span>
+                        </span>
+                        <h2 class="font-heading text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+                            <span x-show="lang === 'en'">Expert Services, Local Presence.</span>
+                            <span x-show="lang === 'te'" x-cloak>నిపుణుల సేవలు, స్థానిక మద్దతు.</span>
+                        </h2>
+                        <ul class="space-y-5">
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-brand shrink-0 mt-1">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-bold text-slate-800 text-lg">
+                                        <span x-show="lang === 'en'">Professional Accuracy</span>
+                                        <span x-show="lang === 'te'" x-cloak>వృత్తిపరమైన ఖచ్చితత్వం</span>
+                                    </h4>
+                                    <p class="text-slate-600 text-sm mt-1">
+                                        <span x-show="lang === 'en'">Every filing and document is thoroughly reviewed by experts to prevent future notices or penalties.</span>
+                                        <span x-show="lang === 'te'" x-cloak>ప్రతి ఫైలింగ్ నిపుణులచే పూర్తిగా సమీక్షించబడుతుంది. భవిష్యత్తులో ఎలాంటి సమస్యలు రాకుండా చూస్తాము.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-brand shrink-0 mt-1">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-bold text-slate-800 text-lg">
+                                        <span x-show="lang === 'en'">On-Time Delivery</span>
+                                        <span x-show="lang === 'te'" x-cloak>సకాలంలో సేవలు</span>
+                                    </h4>
+                                    <p class="text-slate-600 text-sm mt-1">
+                                        <span x-show="lang === 'en'">We value your time. Services like Credit Card to Cash and registrations are processed with lightning speed.</span>
+                                        <span x-show="lang === 'te'" x-cloak>మేము మీ సమయాన్ని గౌరవిస్తాము. క్రెడిట్ కార్డ్ క్యాష్ మరియు రిజిస్ట్రేషన్‌లు వేగంగా జరుగుతాయి.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-brand shrink-0 mt-1">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-bold text-slate-800 text-lg">
+                                        <span x-show="lang === 'en'">Always Available</span>
+                                        <span x-show="lang === 'te'" x-cloak>ఎల్లప్పుడూ అందుబాటులో</span>
+                                    </h4>
+                                    <p class="text-slate-600 text-sm mt-1">
+                                        <span x-show="lang === 'en'">With presence in Tirupati, Rayachoty, Kadapa, and Proddutur, we are always near you for support.</span>
+                                        <span x-show="lang === 'te'" x-cloak>తిరుపతి, రాయచోటి, కడప, మరియు ప్రొద్దుటూరులో మా మద్దతు ఎల్లప్పుడూ మీకు అందుబాటులో ఉంటుంది.</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-duration="800">
+                    <span class="text-brand font-bold uppercase tracking-widest text-sm mb-2 block">
+                        <span x-show="lang === 'en'">Our Expertise</span>
+                        <span x-show="lang === 'te'" x-cloak>మా నైపుణ్యం</span>
+                    </span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+                        <span x-show="lang === 'en'">Comprehensive Online Services</span>
+                        <span x-show="lang === 'te'" x-cloak>సమగ్ర ఆన్‌లైన్ సేవలు</span>
+                    </h2>
+                    <p class="text-slate-600 mb-8">
+                        <span x-show="lang === 'en'">We provide a wide array of professional services to manage your finances, taxes, business registrations, and more.</span>
+                        <span x-show="lang === 'te'" x-cloak>మీ వ్యాపార మరియు ఆర్థిక అవసరాల కోసం మేము అనేక రకాల ప్రొఫెషనల్ సేవలను అందిస్తున్నాము.</span>
+                    </p>
+                </div>
+
+                <!-- Easy Findings Search Bar & Category Chips -->
+                <div class="max-w-2xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <!-- Search Input -->
+                    <div class="relative group mb-6">
+                        <div class="absolute inset-0 bg-brand/20 rounded-full blur-md group-focus-within:bg-brand/30 transition-all duration-300"></div>
+                        <input 
+                            type="text" 
+                            x-model="searchQuery" 
+                            :placeholder="lang === 'en' ? '🔍 Find a service (e.g., GST, Loans, Credit Card)...' : '🔍 ఒక సేవను కనుగొనండి (ఉదా., GST, లోన్స్)...'" 
+                            class="relative w-full px-6 py-4 rounded-full border border-slate-200 focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all outline-none text-slate-700 shadow-lg bg-white/90 backdrop-blur-sm font-medium"
+                        >
+                    </div>
+                    
+                    <!-- Category Quick Filter Chips -->
+                    <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
+                        <button @click="searchQuery = ''" :class="searchQuery === '' ? 'bg-brand text-white border-brand shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'" class="px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300">
+                            <span x-show="lang === 'en'">All</span>
+                            <span x-show="lang === 'te'" x-cloak>అన్నీ</span>
+                        </button>
+                        <button @click="searchQuery = 'Tax'" :class="searchQuery === 'Tax' ? 'bg-brand text-white border-brand shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'" class="px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300">
+                            <span x-show="lang === 'en'">Tax & GST</span>
+                            <span x-show="lang === 'te'" x-cloak>పన్ను & GST</span>
+                        </button>
+                        <button @click="searchQuery = 'Credit'" :class="searchQuery === 'Credit' ? 'bg-brand text-white border-brand shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'" class="px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300">
+                            <span x-show="lang === 'en'">Cards</span>
+                            <span x-show="lang === 'te'" x-cloak>కార్డ్స్</span>
+                        </button>
+                        <button @click="searchQuery = 'Loans'" :class="searchQuery === 'Loans' ? 'bg-brand text-white border-brand shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'" class="px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300">
+                            <span x-show="lang === 'en'">Loans</span>
+                            <span x-show="lang === 'te'" x-cloak>లోన్స్</span>
+                        </button>
+                        <button @click="searchQuery = 'Insurance'" :class="searchQuery === 'Insurance' ? 'bg-brand text-white border-brand shadow-md' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'" class="px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300">
+                            <span x-show="lang === 'en'">Insurance</span>
+                            <span x-show="lang === 'te'" x-cloak>ఇన్సూరెన్స్</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 (Tax, GST) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="100" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <span class="hidden">Tax</span> <!-- Hidden keyword for filters -->
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">GST Filings</span>
+                            <span x-show="lang === 'te'" x-cloak>GST ఫైలింగ్స్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Ensure total compliance with accurate and timely GST registration and return filings for your business.</span>
+                            <span x-show="lang === 'te'" x-cloak>మీ వ్యాపారం కోసం సకాలంలో GST రిజిస్ట్రేషన్ మరియు రిటర్న్ ఫైలింగ్స్.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 2 (Tax) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="200" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <span class="hidden">Tax</span> <!-- Hidden keyword for filters -->
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">ITR Filings</span>
+                            <span x-show="lang === 'te'" x-cloak>ITR ఫైలింగ్స్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Hassle-free Income Tax Return filings for individuals and businesses, maximizing your legal deductions.</span>
+                            <span x-show="lang === 'te'" x-cloak>వ్యక్తులు మరియు వ్యాపారాల కోసం సులభమైన ఆదాయపు పన్ను రిటర్న్స్ ఫైలింగ్స్.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 3 (Credit Card) Highlighted -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="300" class="bg-brand text-white p-8 rounded-3xl shadow-glow relative overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+                        <span class="hidden">Card</span> <!-- Hidden keyword for filters -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white text-2xl border border-white/30 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-money-bill-transfer"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl mb-3">
+                            <span x-show="lang === 'en'">Credit Card to Cash</span>
+                            <span x-show="lang === 'te'" x-cloak>క్రెడిట్ కార్డ్ టు క్యాష్</span>
+                        </h3>
+                        <p class="text-brand-50 text-sm leading-relaxed mb-4">
+                            <span x-show="lang === 'en'">Instant cash conversion from your credit cards at the lowest market rates.</span>
+                            <span x-show="lang === 'te'" x-cloak>మార్కెట్లో అతి తక్కువ ధరలతో మీ క్రెడిట్ కార్డ్‌ల నుండి తక్షణ నగదు మార్పిడి.</span>
+                        </p>
+                        <ul class="space-y-2 text-sm font-semibold bg-white/10 p-4 rounded-xl border border-white/20">
+                            <li class="flex justify-between hover:text-cyan-200 transition-colors">
+                                <span x-show="lang === 'en'">Rupay Cards</span>
+                                <span x-show="lang === 'te'" x-cloak>రూపే కార్డ్స్</span>
+                                <span>1.0%</span>
+                            </li>
+                            <li class="flex justify-between hover:text-cyan-200 transition-colors">
+                                <span x-show="lang === 'en'">Visa Cards</span>
+                                <span x-show="lang === 'te'" x-cloak>వీసా కార్డ్స్</span>
+                                <span>2.2%</span>
+                            </li>
+                            <li class="flex justify-between hover:text-cyan-200 transition-colors">
+                                <span x-show="lang === 'en'">Master Cards</span>
+                                <span x-show="lang === 'te'" x-cloak>మాస్టర్ కార్డ్స్</span>
+                                <span>2.4%</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 (Reports) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="100" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">Project Reports</span>
+                            <span x-show="lang === 'te'" x-cloak>ప్రాజెక్ట్ రిపోర్ట్స్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Detailed and professionally crafted project reports to secure funding and map business growth.</span>
+                            <span x-show="lang === 'te'" x-cloak>నిధులు మరియు వ్యాపార వృద్ధి కోసం వృత్తిపరంగా రూపొందించబడిన ప్రాజెక్ట్ రిపోర్ట్స్.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 5 (Loans) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="200" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <span class="hidden">Loans</span> <!-- Hidden keyword for filters -->
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-hand-holding-dollar"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">Loans & Projections</span>
+                            <span x-show="lang === 'te'" x-cloak>లోన్స్ & ప్రొజెక్షన్స్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Financial projections and documentation assistance for easy processing of business and personal loans.</span>
+                            <span x-show="lang === 'te'" x-cloak>వ్యాపార మరియు వ్యక్తిగత రుణాల కోసం ఆర్థిక అంచనాలు మరియు డాక్యుమెంటేషన్ సహాయం.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 6 (Registration) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="300" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">Udyam Registrations</span>
+                            <span x-show="lang === 'te'" x-cloak>ఉద్యమ్ రిజిస్ట్రేషన్స్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Quick and authentic MSME/Udyam registration to avail government benefits for your enterprise.</span>
+                            <span x-show="lang === 'te'" x-cloak>మీ సంస్థ కోసం ప్రభుత్వ ప్రయోజనాలను పొందడానికి శీఘ్ర MSME/ఉద్యమ్ రిజిస్ట్రేషన్.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 7 (Insurance) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="100" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <span class="hidden">Insurance</span> <!-- Hidden keyword for filters -->
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-shield-heart"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">Life & Term Insurance</span>
+                            <span x-show="lang === 'te'" x-cloak>లైఫ్ & టర్మ్ ఇన్సూరెన్స్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Secure your family's future with the best life and term insurance policies tailored to your needs.</span>
+                            <span x-show="lang === 'te'" x-cloak>మీ అవసరాలకు అనుగుణంగా ఉత్తమమైన లైఫ్ ఇన్సూరెన్స్ మరియు టర్మ్ పాలసీలు.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 8 (Accounting) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="200" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">Tally & Accounting</span>
+                            <span x-show="lang === 'te'" x-cloak>ట్యాలీ & అకౌంటింగ్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Professional bookkeeping, Tally entries, and comprehensive accounting services to keep your records straight.</span>
+                            <span x-show="lang === 'te'" x-cloak>మీ రికార్డులను పక్కాగా నిర్వహించడానికి వృత్తిపరమైన అకౌంటింగ్ మరియు ట్యాలీ సేవలు.</span>
+                        </p>
+                    </div>
+
+                    <!-- Service 9 (PF) -->
+                    <div x-show="searchQuery === '' || $el.innerText.toLowerCase().includes(searchQuery.toLowerCase())" x-transition data-aos="fade-up" data-aos-delay="300" class="bg-slate-50 hover:bg-white p-8 rounded-3xl border border-slate-100 hover:border-brand/30 hover:shadow-soft transition-all duration-300 group hover:-translate-y-2">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl shadow-sm border border-slate-100 mb-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                            <span x-show="lang === 'en'">PF Withdrawals</span>
+                            <span x-show="lang === 'te'" x-cloak>PF విత్‌డ్రాల్స్</span>
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <span x-show="lang === 'en'">Seamless assistance with Provident Fund claims, transfers, and complete withdrawal processes.</span>
+                            <span x-show="lang === 'te'" x-cloak>ప్రావిడెంట్ ఫండ్ క్లెయిమ్‌లు మరియు పూర్తి ఉపసంహరణలకు సులభమైన సహాయం.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact Section -->
+        <section id="locations" class="py-20 bg-slate-50 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-secondary rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                    <!-- Decor -->
+                    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand rounded-full filter blur-[100px] opacity-20 transform translate-x-1/2 -translate-y-1/2 pointer-events-none animate-pulse"></div>
+                    
+                    <div class="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div data-aos="fade-right" data-aos-duration="1000">
+                            <h2 class="font-heading text-3xl md:text-4xl font-extrabold text-white mb-6">
+                                <span x-show="lang === 'en'">Ready to get your work done?</span>
+                                <span x-show="lang === 'te'" x-cloak>మీ పనిని పూర్తి చేయడానికి సిద్ధంగా ఉన్నారా?</span>
+                            </h2>
+                            <p class="text-slate-300 mb-8 text-lg">
+                                <span x-show="lang === 'en'">Reach out to us today. We are available across multiple locations to serve you better.</span>
+                                <span x-show="lang === 'te'" x-cloak>ఈరోజే మమ్మల్ని సంప్రదించండి. మీకు సేవ చేయడానికి మేము అనేక ప్రాంతాల్లో ఉన్నాము.</span>
+                            </p>
+                            
+                            <div class="space-y-6">
+                                <!-- Phone -->
+                                <a href="tel:+919494714142" class="flex items-center gap-4 group">
+                                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand border border-white/10 group-hover:bg-brand group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-slate-400 text-sm font-medium uppercase tracking-wider group-hover:text-slate-300 transition-colors">
+                                            <span x-show="lang === 'en'">Call Us</span>
+                                            <span x-show="lang === 'te'" x-cloak>కాల్ చేయండి</span>
+                                        </p>
+                                        <p class="text-white font-heading font-bold text-xl">9494714142</p>
+                                    </div>
+                                </a>
+                                
+                                <!-- Email -->
+                                <a href="mailto:reltasassociates@gmail.com" class="flex items-center gap-4 group">
+                                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand border border-white/10 group-hover:bg-brand group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-slate-400 text-sm font-medium uppercase tracking-wider group-hover:text-slate-300 transition-colors">
+                                            <span x-show="lang === 'en'">Email Us</span>
+                                            <span x-show="lang === 'te'" x-cloak>ఇమెయిల్ చేయండి</span>
+                                        </p>
+                                        <p class="text-white font-heading font-bold text-lg md:text-xl break-all">reltasassociates@gmail.com</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Easy Findings: Locations Card -->
+                        <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10 transform hover:-translate-y-2 transition-transform duration-500">
+                            <h3 class="font-heading text-xl font-bold text-white mb-6 flex items-center justify-between">
+                                <span class="flex items-center gap-3">
+                                    <i class="fas fa-map-marker-alt text-brand animate-bounce"></i> 
+                                    <span x-show="lang === 'en'">Find Us Easily</span>
+                                    <span x-show="lang === 'te'" x-cloak>మమ్మల్ని సులభంగా కనుగొనండి</span>
+                                </span>
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Location 1 -->
+                                <a href="https://maps.google.com/?q=Tirupati" target="_blank" class="bg-white/5 p-4 rounded-2xl border border-white/5 flex items-center justify-between group hover:bg-white/10 hover:border-brand/50 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-brand group-hover:scale-150 transition-transform"></div>
+                                        <span class="text-white font-medium">
+                                            <span x-show="lang === 'en'">Tirupati</span>
+                                            <span x-show="lang === 'te'" x-cloak>తిరుపతి</span>
+                                        </span>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-slate-400 group-hover:text-brand transition-colors text-xs"></i>
+                                </a>
+                                <!-- Location 2 -->
+                                <a href="https://maps.google.com/?q=Rayachoty" target="_blank" class="bg-white/5 p-4 rounded-2xl border border-white/5 flex items-center justify-between group hover:bg-white/10 hover:border-brand/50 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-brand group-hover:scale-150 transition-transform"></div>
+                                        <span class="text-white font-medium">
+                                            <span x-show="lang === 'en'">Rayachoty</span>
+                                            <span x-show="lang === 'te'" x-cloak>రాయచోటి</span>
+                                        </span>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-slate-400 group-hover:text-brand transition-colors text-xs"></i>
+                                </a>
+                                <!-- Location 3 -->
+                                <a href="https://maps.google.com/?q=Kadapa" target="_blank" class="bg-white/5 p-4 rounded-2xl border border-white/5 flex items-center justify-between group hover:bg-white/10 hover:border-brand/50 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-brand group-hover:scale-150 transition-transform"></div>
+                                        <span class="text-white font-medium">
+                                            <span x-show="lang === 'en'">Kadapa</span>
+                                            <span x-show="lang === 'te'" x-cloak>కడప</span>
+                                        </span>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-slate-400 group-hover:text-brand transition-colors text-xs"></i>
+                                </a>
+                                <!-- Location 4 -->
+                                <a href="https://maps.google.com/?q=Proddutur" target="_blank" class="bg-white/5 p-4 rounded-2xl border border-white/5 flex items-center justify-between group hover:bg-white/10 hover:border-brand/50 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-brand group-hover:scale-150 transition-transform"></div>
+                                        <span class="text-white font-medium">
+                                            <span x-show="lang === 'en'">Proddutur</span>
+                                            <span x-show="lang === 'te'" x-cloak>ప్రొద్దుటూరు</span>
+                                        </span>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-slate-400 group-hover:text-brand transition-colors text-xs"></i>
+                                </a>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                                <p class="text-slate-300 text-sm">
+                                    <span x-show="lang === 'en'">Click any location above to open in Google Maps.</span>
+                                    <span x-show="lang === 'te'" x-cloak>గూగుల్ మ్యాప్స్‌లో తెరవడానికి పైన ఉన్న ఏదైనా ప్రాంతాన్ని క్లిక్ చేయండి.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-12 pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left items-start">
+                <!-- Logo & About -->
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <div class="flex items-center gap-3 group">
+                        <div class="cube-logo w-10 h-10 text-lg group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                            <span class="z-10 tracking-tighter">mk</span>
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span class="font-heading font-bold text-lg text-brand tracking-wide uppercase leading-none">MK Online</span>
+                            <span class="font-heading font-semibold text-[10px] text-slate-500 tracking-widest uppercase leading-none mt-1">Services</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-500 text-sm mt-2 max-w-xs">
+                        <span x-show="lang === 'en'">Your trusted partner for GST, taxation, and financial growth solutions.</span>
+                        <span x-show="lang === 'te'" x-cloak>GST, పన్నులు మరియు ఆర్థిక వృద్ధికి మీ నమ్మకమైన భాగస్వామి.</span>
+                    </p>
+                </div>
+                
+                <!-- Business Hours -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-heading font-bold text-slate-800 mb-4">
+                        <span x-show="lang === 'en'">Business Hours</span>
+                        <span x-show="lang === 'te'" x-cloak>పని వేళలు</span>
+                    </h4>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex gap-2 justify-center md:justify-start">
+                            <span class="font-semibold text-slate-700">Mon - Sat:</span> 9:00 AM - 8:00 PM
+                        </li>
+                        <li class="flex gap-2 justify-center md:justify-start">
+                            <span class="font-semibold text-slate-700">Sunday:</span> Closed (Available on Call)
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-heading font-bold text-slate-800 mb-4">
+                        <span x-show="lang === 'en'">Connect With Us</span>
+                        <span x-show="lang === 'te'" x-cloak>మాతో కనెక్ట్ అవ్వండి</span>
+                    </h4>
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/919494714142" target="_blank" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:reltasassociates@gmail.com" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-brand hover:text-white hover:border-brand hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+919494714142" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-800 hover:text-white hover:border-slate-800 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i class="fas fa-phone-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-200 mt-10 pt-6 text-center">
+                <p class="text-slate-500 text-sm">
+                    &copy; <script>document.write(new Date().getFullYear())</script> MK Online Services. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Bottom Contact Taskbar -->
+    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-[500px] bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] rounded-full px-2 py-2.5 flex justify-between items-center">
+        
+        <!-- Call -->
+        <a href="tel:+919494714142" class="flex-1 flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-brand transition-all group">
+            <i class="fas fa-phone-alt text-[1.1rem] group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'en'">Call</span>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'te'" x-cloak>కాల్</span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:reltasassociates@gmail.com" class="flex-1 flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-brand transition-all group">
+            <i class="fas fa-envelope text-[1.1rem] group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'en'">Email</span>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'te'" x-cloak>ఇమెయిల్</span>
+        </a>
+
+        <!-- WhatsApp (Prominent Center) -->
+        <a href="https://wa.me/919494714142" target="_blank" class="flex-1 flex flex-col items-center justify-center relative group">
+            <div class="absolute -top-10 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/40 border-[3px] border-white group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </div>
+            <span class="text-[9px] font-bold uppercase tracking-wider mt-5 text-[#25D366]" x-show="lang === 'en'">WhatsApp</span>
+            <span class="text-[9px] font-bold uppercase tracking-wider mt-5 text-[#25D366]" x-show="lang === 'te'" x-cloak>వాట్సాప్</span>
+        </a>
+
+        <!-- Location -->
+        <a href="#locations" class="flex-1 flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-brand transition-all group">
+            <i class="fas fa-map-marker-alt text-[1.1rem] group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'en'">Location</span>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'te'" x-cloak>ప్రాంతం</span>
+        </a>
+
+        <!-- Share -->
+        <button onclick="sharePage()" class="flex-1 flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-brand transition-all group">
+            <i class="fas fa-share-nodes text-[1.1rem] group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'en'">Share</span>
+            <span class="text-[9px] font-bold uppercase tracking-wider" x-show="lang === 'te'" x-cloak>షేర్</span>
+        </button>
+    </div>
+
+    <!-- Initialize AOS Animation Library & Custom Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // whether animation should happen only once - while scrolling down
+            offset: 50, // offset (in px) from the original trigger point
+            easing: 'ease-in-out', // default easing for AOS animations
+        });
+
+        // Share Page functionality
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'MK Online Services',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                var el = document.createElement('textarea');
+                el.value = window.location.href;
+                document.body.appendChild(el);
+                el.select();
+                try {
+                    document.execCommand('copy');
+                    alert('Link copied to clipboard!');
+                } catch (e) {
+                    console.error('Copy to clipboard failed.', e);
+                }
+                document.body.removeChild(el);
+            }
+        }
+    </script>
+</body>
+</html>
